@@ -23,19 +23,17 @@ public class TicketRepository {
     }
 
     public Ticket[] findAll(String from, String to) {
-//        int length;
-//        length = items.length + 1;
         Ticket[] tmp = new Ticket[items.length];
         int index = 0;
         for (Ticket item : items) {
             if (item.getFrom() == from && item.getTo() == to) {
                 tmp[index] = item;
-                save(item);
                 index++;
             }
-            items = tmp;
         }
-        return tmp;
+        Ticket[] returnItems = new Ticket[index];
+        System.arraycopy(tmp,0,returnItems,0,index);
+        return returnItems;
     }
 
 
