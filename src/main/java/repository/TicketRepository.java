@@ -5,6 +5,14 @@ import domain.Ticket;
 public class TicketRepository {
     private Ticket[] items = new Ticket[0];
 
+    public TicketRepository(Ticket[] items) {
+        this.items = items;
+    }
+
+    public TicketRepository() {
+        
+    }
+
     public void save(Ticket item) {
         int length = items.length + 1;
         Ticket[] tmp = new Ticket[length];
@@ -14,29 +22,44 @@ public class TicketRepository {
         items = tmp;
     }
 
-    public Ticket[] findAll() {
-        return items;
-    }
-
-    public void removeById(int id) {
-        int length = items.length - 1;
-        Ticket[] tmp = new Ticket[length];
+    public Ticket[] findAll(String from, String to) {
+//        int length;
+//        length = items.length + 1;
+        Ticket[] tmp = new Ticket[items.length];
         int index = 0;
         for (Ticket item : items) {
-            if (item.getId() != id) {
+            if (item.getFrom() == from && item.getTo() == to) {
                 tmp[index] = item;
+                save(item);
                 index++;
             }
+            items = tmp;
         }
-        items = tmp;
+        return tmp;
     }
 
-    public Ticket findById(int id) {
-        for (Ticket item : items) {
-            if (item.getId() == id) {
-                return item;
+
+
+        public void removeById ( int id){
+            int length = items.length - 1;
+            Ticket[] tmp = new Ticket[length];
+            int index = 0;
+            for (Ticket item : items) {
+                if (item.getId() != id) {
+                    tmp[index] = item;
+                    index++;
+                }
             }
+            items = tmp;
         }
-        return null;
+
+        public Ticket findById ( int id){
+            for (Ticket item : items) {
+                if (item.getId() == id) {
+                    return item;
+                }
+            }
+            return null;
+        }
     }
-}
+

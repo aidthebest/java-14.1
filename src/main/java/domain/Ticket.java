@@ -13,21 +13,21 @@ import java.util.Objects;
 public class Ticket implements Comparable<Ticket> {
     private int id;
     private int price;
-    private String airportOfDeparture;
-    private String airportOfArrival;
-    private int flightDuration;
+    private String from;
+    private String to;
+    private int flightDurationMinutes;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
-        return id == ticket.id && price == ticket.price && flightDuration == ticket.flightDuration && Objects.equals(airportOfDeparture, ticket.airportOfDeparture) && Objects.equals(airportOfArrival, ticket.airportOfArrival);
+        return id == ticket.id && price == ticket.price && flightDurationMinutes == ticket.flightDurationMinutes && Objects.equals(from, ticket.from) && Objects.equals(to, ticket.to);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, airportOfDeparture, airportOfArrival, flightDuration);
+        return Objects.hash(id, price, from, to, flightDurationMinutes);
     }
 
     @Override
@@ -35,14 +35,14 @@ public class Ticket implements Comparable<Ticket> {
         return "Ticket{" +
                 "id=" + id +
                 ", price=" + price +
-                ", airportOfDeparture='" + airportOfDeparture + '\'' +
-                ", airportOfArrival='" + airportOfArrival + '\'' +
-                ", flightDuration=" + flightDuration +
+                ", airportOfDeparture='" + from + '\'' +
+                ", airportOfArrival='" + to + '\'' +
+                ", flightDuration=" + flightDurationMinutes +
                 '}';
     }
 
     @Override
     public int compareTo(Ticket o) {
-        return 0;
+        return this.price - o.price;
     }
 }
