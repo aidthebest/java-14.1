@@ -43,11 +43,6 @@ public class Ticket implements Comparable<Ticket> {
 
     @Override
     public int compareTo(Ticket o) {
-        if(o!=null) {
-            return Float.compare(this.price, o.price);
-        }
-        else{
-            return -1;
-        }
+        return Float.compare(this.price, o.price);
     }
 }

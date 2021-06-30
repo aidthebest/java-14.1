@@ -10,7 +10,7 @@ public class TicketRepository {
     }
 
     public TicketRepository() {
-        
+
     }
 
     public void save(Ticket item) {
@@ -32,32 +32,31 @@ public class TicketRepository {
             }
         }
         Ticket[] returnItems = new Ticket[index];
-        System.arraycopy(tmp,0,returnItems,0,index);
+        System.arraycopy(tmp, 0, returnItems, 0, index);
         return returnItems;
     }
 
 
-
-        public void removeById ( int id){
-            int length = items.length - 1;
-            Ticket[] tmp = new Ticket[length];
-            int index = 0;
-            for (Ticket item : items) {
-                if (item.getId() != id) {
-                    tmp[index] = item;
-                    index++;
-                }
+    public void removeById(int id) {
+        int length = items.length - 1;
+        Ticket[] tmp = new Ticket[length];
+        int index = 0;
+        for (Ticket item : items) {
+            if (item.getId() != id) {
+                tmp[index] = item;
+                index++;
             }
-            items = tmp;
         }
-
-        public Ticket findById ( int id){
-            for (Ticket item : items) {
-                if (item.getId() == id) {
-                    return item;
-                }
-            }
-            return null;
-        }
+        items = tmp;
     }
+
+    public Ticket findById(int id) {
+        for (Ticket item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+}
 
