@@ -2,6 +2,8 @@ package repository;
 
 import domain.Ticket;
 
+import java.util.Arrays;
+
 public class TicketRepository {
     private Ticket[] items = new Ticket[0];
 
@@ -33,6 +35,7 @@ public class TicketRepository {
         }
         Ticket[] returnItems = new Ticket[index];
         System.arraycopy(tmp, 0, returnItems, 0, index);
+        Arrays.sort(returnItems);
         return returnItems;
     }
 

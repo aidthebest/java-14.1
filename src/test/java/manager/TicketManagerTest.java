@@ -39,7 +39,6 @@ class TicketManagerTest {
         Ticket[] expected = new Ticket[]{first, sixt, fifth};
         Ticket[] actual = manager.getAll("VKO", "AER");
         System.out.println("======>" + actual.length);
-        Arrays.sort(actual);
 
         assertArrayEquals(expected, actual);
 
