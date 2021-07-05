@@ -28,7 +28,7 @@ public class TicketRepository {
         Ticket[] tmp = new Ticket[items.length];
         int index = 0;
         for (Ticket item : items) {
-            if (item.getFrom() == from && item.getTo() == to) {
+            if (item.getFrom().equals(from) && item.getTo().equals(to)) {
                 tmp[index] = item;
                 index++;
             }
